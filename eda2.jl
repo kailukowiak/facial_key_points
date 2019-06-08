@@ -14,7 +14,7 @@ imshow(ni.raw[:, 200, :])
 
 # ~/PythonProjects/facial_key_points/eda/data/MouseSkulls/1179.mnc
 
-##
+## Looking at the start
 ni_raw = ni.raw
 ni_raw .> 200
 imgg = Gray.(ni_raw)
