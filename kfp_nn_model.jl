@@ -8,6 +8,7 @@ using CuArrays
 using CUDAnative
 using Statistics
 using ProgressBars
+using MLDataUtils
 
 train = CSV.read("data/training.csv") |> DataFrame
 
@@ -49,9 +50,6 @@ function image_manipulator(X)
 end
 
 
-x = image_manipulator(X)
-
-
 function img_vals(x)
     img = split(x)
     img = tryparse.(Float64, img)
@@ -60,6 +58,13 @@ function img_vals(x)
     img
 end
 
+x = image_manipulator(X)
+
+
+
 test3 = reshape(x, 1, 96, 96, 7049)
 
-imshow(x[1, :, :, 2])
+imshow(x[1, :, :, 1])
+
+## TODO
+# Make train test split
