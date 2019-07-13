@@ -10,7 +10,7 @@ using Statistics
 using ProgressBars
 using MLDataUtils
 
-train = CSV.read("data/training.csv") |> DataFrame
+train = CSV.read("data/training.csv") |> DataFrame;
 
 describe(train)
 ## Lots of missing values
@@ -28,16 +28,17 @@ function replace_missing(df)
     for col in names(df)
         col_mean = mean(skipmissing(df[col]))
         df[ismissing.(df[col]), col] = col_mean
-        println(col_mean)
     end
+    return df
 end
 
-replace_missing(train)
+trian = replace_missing(train)
 colwise(missing_by_col, train)
 
 ## Fixed missing
-X = train[:Image]
-delete!(train, :Image)
+X = train[:Image];
+
+delete!(train, :Image);
 
 function image_manipulator(X)
     l = []
@@ -68,3 +69,4 @@ imshow(x[1, :, :, 1])
 
 ## TODO
 # Make train test split
+
