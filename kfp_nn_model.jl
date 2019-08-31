@@ -84,3 +84,9 @@ x_train, x_val = splitobs(x, 0.7);
 
 ## Model
 
+@info("constructing the model")
+
+model = Chain(
+    Conv((3,3), 1=>16, relu)
+
+)
